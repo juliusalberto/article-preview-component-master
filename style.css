@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #ECF2F8;
+  display: grid;
+  place-content: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  max-width: 327px;
+  position: relative;
+  overflow: hidden;
+}
+.card .header-img {
+  border-radius: 10px 10px 0 0;
+}
+.card section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 32px 32px 0 32px;
+}
+.card section h3 {
+  font-family: "Manrope";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #48556A;
+}
+.card section p {
+  font-family: "Manrope";
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #6E8098;
+}
+.card .footer {
+  display: grid;
+  position: relative;
+  z-index: 1;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 20px 32px;
+}
+.card .footer .text-container-footer .name-footer {
+  font-family: "Manrope";
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #48556A;
+}
+.card .footer .text-container-footer .date-footer {
+  font-family: "Manrope";
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #9DAEC2;
+}
+.card .footer img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 40px;
+  justify-self: left;
+}
+.card .footer .share-button {
+  justify-self: right;
+}
+
+.share-tab {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 64px;
+  border-radius: 0 0 8px 8px;
+  background: #48556A;
+  padding: 22px 32px;
+  gap: 22px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.share-tab .share-text {
+  font-family: "Manrope";
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 5px;
+  color: #9DAEC2;
+}
+.share-tab .social-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.share-tab.active {
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    max-width: 730px;
+    overflow: visible;
+  }
+  .card img {
+    max-width: 284px;
+  }
+  .card section {
+    padding: 32px 40px 0 40px;
+  }
+  .card section h3 {
+    font-family: "Manrope";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+  .card .footer {
+    grid-template-columns: auto 1fr 1fr;
+    padding: 20px 40px 20px 40px;
+  }
+  .card .footer img {
+    max-height: 40px;
+    max-width: 40px;
+    border-radius: 40px;
+  }
+  .card .footer .share-tab {
+    bottom: 70px;
+    left: auto;
+    right: -80px;
+    max-width: 248px;
+    max-height: 55px;
+    border-radius: 10px;
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .card .footer .share-tab::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    right: 140px;
+    transform: translateX(100%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #48556A;
+  }
+  .card .footer .share-tab.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}/*# sourceMappingURL=style.css.map */

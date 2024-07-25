@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+$light-blue-bg: #ECF2F8;
+$para-grey: #6E8098;
+$header-grey: #48556A;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin font-style($family, $size, $weight, $line-height: normal) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+}
+
+@mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+body {
+    height: 100vh;
+    background-color: $light-blue-bg;
+    display: grid;
+    place-content: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    max-width: 327px;
+    position: relative;
+    overflow: hidden;
+
+    .header-img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    section {
+        @include flexbox(column, flex-start, flex-start);
+        gap: 12px;
+        padding: 32px 32px 0 32px;
+
+        h3 {
+            @include font-style("Manrope", 16px, 700, 24px);
+            color: $header-grey;
+        }
+        
+        p {
+            @include font-style("Manrope", 13px, 500, 20px);
+            color: $para-grey;
+        }
+
+    }
+
+
+
+    .footer {
+        display: grid;
+        position: relative;
+        z-index: 1;
+        grid-template-columns: 1fr 2fr 1fr;
+        justify-items: center;
+        align-items: center;
+        padding: 20px 32px;
+
+        .text-container-footer {
+
+            .name-footer {
+                @include font-style("Manrope", 13px, 700, 20px);
+                color: $header-grey;
+            }
+
+            .date-footer {
+                @include font-style("Manrope", 13px, 500, 20px);
+                color: #9DAEC2;
+            }
+        }
+
+        img {
+            max-width: 40px;
+            max-height: 40px;
+            border-radius: 40px;
+            justify-self: left;
+        }
+
+        .share-button {
+            justify-self: right;
+        }
+
+    }
+}
+
+.share-tab {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 64px;
+    border-radius: 0 0 8px 8px;
+    background: $header-grey;
+    padding: 22px 32px;
+    gap: 22px;
+
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+    
+    @include flexbox(row, space-between, center);
+
+    .share-text {
+        @include font-style("Manrope", 13px, 500, 20px);
+        letter-spacing: 5px;
+        color: #9DAEC2;
+    }
+
+    .social-buttons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &.active {
+        transform: translateY(0);
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        @include flexbox(row);
+        max-width: 730px;
+        overflow: visible;
+
+        img {
+            max-width: 284px;
+        }
+
+        section {
+            h3 {
+                @include font-style("Manrope", 20px, 700, 28px);
+            }
+            padding: 32px 40px 0 40px;
+        }
+
+        .footer {
+            grid-template-columns: auto 1fr 1fr;
+            padding: 20px 40px 20px 40px;
+
+            img {
+                max-height: 40px;
+                max-width: 40px;
+                border-radius: 40px;
+            }
+
+            .share-tab {
+                bottom: 70px;
+                left: auto;
+                right: -80px;
+                max-width: 248px;
+                max-height: 55px;
+                border-radius: 10px;
+                transform: translateY(0) scale(0.9);
+                opacity: 0;
+                visibility: hidden;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    right: 140px;
+                    transform: translateX(100%);
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid $header-grey;
+                }
+
+                &.active {
+                    transform: translateY(0) scale(1);
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
